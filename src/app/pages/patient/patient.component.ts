@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PatientService } from '../../service/patient.service';
 import { Patient } from '../../model/patient';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { switchMap } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-patient',
@@ -19,6 +21,9 @@ export class PatientComponent implements OnInit {
     'actions',
   ];
   patients: MatTableDataSource<Patient>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private patientService: PatientService,
@@ -41,6 +46,8 @@ export class PatientComponent implements OnInit {
 
   createTable(data: Patient[]) {
     this.patients = new MatTableDataSource(data);
+    this.patients.paginator = this.paginator;
+    this.patients.sort = this.sort;
   }
 
   delete(idPatient: number) {
@@ -55,5 +62,9 @@ export class PatientComponent implements OnInit {
         this.patientService.setPatientChange(data);
         this.patientService.setMessageChange('DELETED!');
       });
+  }
+
+  applyFilter(e: any) {
+    this.patients.filter = e.target.value.trim();
   }
 }
