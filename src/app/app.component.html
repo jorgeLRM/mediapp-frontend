@@ -33,6 +33,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/search"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>search</mat-icon>
@@ -43,6 +44,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/consult"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>insert_drive_file</mat-icon>
@@ -53,6 +55,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/consult-autocomplete"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>insert_drive_file</mat-icon>
@@ -63,6 +66,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/consult-wizard"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>view_carousel</mat-icon>
@@ -73,6 +77,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/specialty"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>star_rate</mat-icon>
@@ -83,6 +88,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/medic"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>healing</mat-icon>
@@ -93,6 +99,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/exam"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>assignment</mat-icon>
@@ -103,6 +110,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/patient"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>accessibility</mat-icon>
@@ -113,6 +121,7 @@
         mat-menu-item
         (click)="sidenav.toggle()"
         routerLink="/pages/report"
+        [routerLinkActive]="['active']"
         style="cursor: pointer"
       >
         <mat-icon>assessment</mat-icon>
@@ -122,6 +131,13 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+      <ngx-simple-breadcrumb>
+        <ng-template let-breadcrumb>
+          <a [routerLink]="breadcrumb.route">{{ breadcrumb.label }}</a>
+        </ng-template>
+        <ng-template #separator> > </ng-template>
+      </ngx-simple-breadcrumb>
+
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

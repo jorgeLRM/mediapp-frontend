@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxSimpleBreadcrumbModule } from 'ngx-simple-breadcrumb';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,13 +12,19 @@ import { MaterialModule } from './material/material.module';
 import { PatientEditComponent } from './pages/patient/patient-edit/patient-edit.component';
 
 @NgModule({
-  declarations: [AppComponent, PatientComponent, MedicComponent, PatientEditComponent],
+  declarations: [
+    AppComponent,
+    PatientComponent,
+    MedicComponent,
+    PatientEditComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    NgxSimpleBreadcrumbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

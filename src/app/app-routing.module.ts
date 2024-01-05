@@ -8,12 +8,25 @@ const routes: Routes = [
   {
     path: 'pages/patient',
     component: PatientComponent,
+    data: { breadcrumb: 'Patient' },
     children: [
-      { path: 'new', component: PatientEditComponent },
-      { path: 'edit/:id', component: PatientEditComponent },
+      {
+        path: 'new',
+        component: PatientEditComponent,
+        data: { breadcrumb: 'patient-new' },
+      },
+      {
+        path: 'edit/:id',
+        component: PatientEditComponent,
+        data: { breadcrumb: 'patient-edit' },
+      },
     ],
   },
-  { path: 'pages/medic', component: MedicComponent },
+  {
+    path: 'pages/medic',
+    component: MedicComponent,
+    data: { breadcrumb: 'Medic' },
+  },
 ];
 
 @NgModule({
